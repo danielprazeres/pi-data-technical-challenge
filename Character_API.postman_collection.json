@@ -1,0 +1,203 @@
+{
+  "info": {
+    "_postman_id": "7e8a2f6b-3c4d-4fa8-9a54-5b97e9f2c7d5",
+    "name": "Character API",
+    "description": "Collection for testing the Character API implemented for the technical challenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get all characters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/character/getAll",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "getAll"
+          ]
+        },
+        "description": "Returns a list of all characters registered in the database."
+      },
+      "response": []
+    },
+    {
+      "name": "Get character by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/character/get/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "get",
+            "1"
+          ]
+        },
+        "description": "Returns the complete data of a specific character, searched by ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Add new character",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 3,\n  \"name\": \"Leia Organa\",\n  \"height\": 150,\n  \"mass\": 49,\n  \"hair_color\": \"brown\",\n  \"skin_color\": \"light\",\n  \"eye_color\": \"brown\",\n  \"birth_year\": 1977\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/character/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "add"
+          ]
+        },
+        "description": "Adds a new character to the database. All fields are required."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete character by ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/character/delete/3",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "delete",
+            "3"
+          ]
+        },
+        "description": "Removes an existing character from the database, searched by ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Tests - Invalid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/character/get/999",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "get",
+            "999"
+          ]
+        },
+        "description": "Test to verify the API behavior when requesting a character with a non-existent ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Tests - Incomplete Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 4,\n  \"name\": \"Han Solo\",\n  \"height\": 180\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/character/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "add"
+          ]
+        },
+        "description": "Test to verify the validation of required fields in the add character endpoint."
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Tests - Incorrect Types",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"five\",\n  \"name\": \"Chewbacca\",\n  \"height\": \"tall\",\n  \"mass\": \"heavy\",\n  \"hair_color\": \"brown\",\n  \"skin_color\": \"hairy\",\n  \"eye_color\": \"blue\",\n  \"birth_year\": \"a long time ago\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/character/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "character",
+            "add"
+          ]
+        },
+        "description": "Test to verify the validation of data types in the add character endpoint."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"Status code is 200 OK or 201 Created for successful requests\", function() {",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+          "});"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string",
+      "description": "Base URL for the API"
+    }
+  ]
+}
