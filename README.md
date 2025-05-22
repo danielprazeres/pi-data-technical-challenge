@@ -3,6 +3,7 @@
 This is a RESTful API built with FastAPI to manage fictional characters. The project follows a modular architecture with components for database, models, routes, schemas, and services and includes full test coverage and Docker support.
 
 ![API for Interacting with Test Data Using HTTP Methods](https://github.com/user-attachments/assets/46a1f915-6859-4fa1-8d3f-5ad45eef5013)
+https://gitmind.com/app/docs/mowpwpnu
 
 ---
 
