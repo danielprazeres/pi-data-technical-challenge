@@ -57,7 +57,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"id\": 3,\n  \"name\": \"Leia Organa\",\n  \"height\": 150,\n  \"mass\": 49,\n  \"hair_color\": \"brown\",\n  \"skin_color\": \"light\",\n  \"eye_color\": \"brown\",\n  \"birth_year\": 1977\n}"
+          "raw": "{\n  \"name\": \"Leia Organa\",\n  \"height\": 150,\n  \"mass\": 49,\n  \"hair_color\": \"brown\",\n  \"skin_color\": \"light\",\n  \"eye_color\": \"brown\",\n  \"birth_year\": 1977\n}"
         },
         "url": {
           "raw": "{{base_url}}/character/add",
@@ -125,7 +125,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"id\": 4,\n  \"name\": \"Han Solo\",\n  \"height\": 180\n}"
+          "raw": "{\n  \"name\": \"Han Solo\",\n  \"height\": 180\n}"
         },
         "url": {
           "raw": "{{base_url}}/character/add",
@@ -153,7 +153,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"id\": \"five\",\n  \"name\": \"Chewbacca\",\n  \"height\": \"tall\",\n  \"mass\": \"heavy\",\n  \"hair_color\": \"brown\",\n  \"skin_color\": \"hairy\",\n  \"eye_color\": \"blue\",\n  \"birth_year\": \"a long time ago\"\n}"
+          "raw": "{\n  \"name\": \"Chewbacca\",\n  \"height\": \"tall\",\n  \"mass\": \"heavy\",\n  \"hair_color\": \"brown\",\n  \"skin_color\": \"hairy\",\n  \"eye_color\": \"blue\",\n  \"birth_year\": \"a long time ago\"\n}"
         },
         "url": {
           "raw": "{{base_url}}/character/add",

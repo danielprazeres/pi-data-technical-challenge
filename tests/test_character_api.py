@@ -10,7 +10,6 @@ def test_read_main():
 
 def test_create_character():
     character_data = {
-        "id": 1,
         "name": "Luke Skywalker",
         "height": 172,
         "mass": 77,
