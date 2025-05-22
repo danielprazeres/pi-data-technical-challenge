@@ -2,6 +2,8 @@ from sqlalchemy.orm import Session
 from app.models.character import Character
 from app.schemas.character import CharacterCreate
 from fastapi import HTTPException
+from sqlalchemy.exc import IntegrityError
+from fastapi import HTTPException
 
 class CharacterService:
     @staticmethod
@@ -17,14 +19,15 @@ class CharacterService:
 
     @staticmethod
     def create_character(db: Session, character: CharacterCreate):
-        db_character = Character(**character.model_dump())
-        existing_character = db.query(Character).filter(Character.id == db_character.id).first()
-        if existing_character:
-            raise HTTPException(status_code=400, detail="Character already exists")
-        db.add(db_character)
-        db.commit()
-        db.refresh(db_character)
-        return db_character
+        new_character = Character(**character.dict())
+        db.add(new_character)
+        try:
+            db.commit()
+            db.refresh(new_character)
+            return new_character
+        except IntegrityError:
+            db.rollback()
+            raise HTTPException(status_code=400, detail="Character with this ID already exists")
 
     @staticmethod
     def delete_character(db: Session, character_id: int):
