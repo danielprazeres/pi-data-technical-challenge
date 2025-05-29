@@ -7,7 +7,11 @@ services:
       dockerfile: Dockerfile
     container_name: character-api-container
     ports:
-      - "8000:8000"
+      - "8001:8001"
     volumes:
       - .:/app
-    command: ["uvicorn", "app.services.main:app", "--host", "0.0.0.0", "--port", "8000"]
+      - db-data:/app/app
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+
+volumes:
+  db-data:

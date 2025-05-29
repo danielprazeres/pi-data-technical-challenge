@@ -67,13 +67,13 @@ pip install -r requirements.txt
 ### 4. Run the API
 
 ```bash
-uvicorn app.services.main:app --reload
+uvicorn app.main:app --reload
 ```
 
 You can explore the API using the built-in documentation:
 
-- Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
-- ReDoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+- Swagger UI: [http://localhost:8001/docs](http://localhost:8001/docs)
+- ReDoc: [http://localhost:8001/redoc](http://localhost:8001/redoc)
 
 ---
 
@@ -110,7 +110,7 @@ docker build -t character-api .
 #### 2. Run the container with a fixed name
 
 ```bash
-docker run -d --name character-api-container -p 8000:8000 character-api
+docker run -d --name character-api-container -p 8001:8001 character-api
 ```
 
 This avoids creating a new container with a random name on each run.
